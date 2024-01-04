@@ -27,17 +27,52 @@ const BaselHtml = ({ children }: elements.Children) => `
 `;
 
 app.get("/", (req, res) => {
-
   res.send(
-    < BaselHtml >
+    <BaselHtml>
       <body>
-        <button hx-post="clicked" hx-swap="outerHTML"> CLick Me</button>
+        <button hx-post="clicked" hx-swap="outerHTML">
+          {" "}
+          CLick Me
+        </button>
       </body>
-    </BaselHtml >)
+    </BaselHtml>,
+  );
 });
 
 app.post("/clicked", (req, res) => {
-  res.send(
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-  );
+  res.send(<h1 class="text-3xl font-bold underline">Hello world!</h1>);
+});
+
+app.options("/sse", (req, res) => {
+  res.setHeader("access-control-allow-origin", "*");
+  res.setHeader("access-control-allow-methods", "GET, POST, OPTIONS");
+  res.setHeader("access-control-allow-headers", "*");
+  res.setHeader("access-control-max-age", "86400");
+  res.end();
+});
+
+app.post("/sse", async (req, res) => {
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("access-control-allow-origin", "*");
+  res.flushHeaders(); // flush the headers to establish SSE with client
+
+  // send event stream header to client
+  res.write("event: message\n");
+  res.write("data: hello world\n\n");
+  res.write('retry: 10000\n\n');
+  let count = 0;
+
+  while (count < 100) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    console.log('Emit', ++count);
+    // Emit an SSE that contains the current 'count' as a string
+    res.write(`data: ${count}\n\n`);
+  }
+
+  res.write("event: Done\n\n");
+  res.end(); // close the stream when we are done
+  return;
 });
