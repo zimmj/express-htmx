@@ -1,12 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import * as elements from "typed-html";
+import houseRouter from "./controllers/house.controller";
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use("/house", houseRouter)
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
@@ -26,7 +28,7 @@ const BaselHtml = ({ children }: elements.Children) => `
 </html>
 `;
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.send(
     <BaselHtml>
       <body>
@@ -39,7 +41,8 @@ app.get("/", (req, res) => {
   );
 });
 
-app.post("/clicked", (req, res) => {
+
+app.get("/clicked", (req, res) => {
   res.send(<h1 class="text-3xl font-bold underline">Hello world!</h1>);
 });
 
