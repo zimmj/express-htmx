@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use("/house", houseRouter)
+app.use("/houses", houseRouter)
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
@@ -20,24 +20,47 @@ const BaselHtml = ({ children }: elements.Children) => `
 <html lang="en">
   <head>
     <script src="https://unpkg.com/htmx.org@1.9.6"></script>
-    <link rel="stylesheet" type="text/css" href="css/out-style.css" />
     <meta charset="UTF-8" />
-    <title>React SSR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="http://localhost:3000/css/app.css" />
+    <title>Htmx show case</title>
   </head>
+  <body>
   ${children}
+  </body>
 </html>
 `;
 
+export const Layout = ({ children }: elements.Children) =>
+  <BaselHtml>
+    <div class="layout">
+      <div id="Navigation" class="flex justify-center">
+        <h1 hx-boost='true' class="cursor-pointer text-3xl font-bold underline">
+          <a href="/">Zimmj Htmx Showcase</a>
+        </h1>
+      </div>
+      <div id="content" class="">
+        {children}
+      </div>
+      <div id="footer" class="bg-slate-600">
+        <div class="text-white p-4">
+          This is the footer
+        </div>
+      </div>
+    </div>
+  </BaselHtml>;
+
 app.get("/", (_, res) => {
   res.send(
-    <BaselHtml>
-      <body>
-        <button hx-post="clicked" hx-swap="outerHTML">
-          {" "}
-          CLick Me
-        </button>
-      </body>
-    </BaselHtml>,
+    <Layout>
+      <button hx-get="clicked" hx-swap="outerHTML">
+        {" "}
+        CLick Me
+      </button>
+      <div hx-boost='true'>
+        <a href="/houses/index">House Service</a>
+      </div>
+    </Layout>,
   );
 });
 

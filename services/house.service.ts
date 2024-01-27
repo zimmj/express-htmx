@@ -41,6 +41,10 @@ export class HouseService {
     return this.houses.slice();
   }
 
+  public getHouseCount(): number {
+    return this.houses.length;
+  }
+
   public getHouseByName(name: string): House | undefined {
     return this.houses.find((house) => house.name === name);
   }

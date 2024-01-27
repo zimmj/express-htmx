@@ -3,9 +3,28 @@ import { Address, House } from "../models/house.model";
 import { HouseService } from "../services/house.service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as elements from "typed-html";
+import { Layout } from "..";
 
 const houseRouter = Router();
 const houseService = new HouseService();
+
+houseRouter.get("/index", (_, res) => {
+  res.send(
+    <Layout>
+      <div>
+        <h1>House Service</h1>
+        <div>
+          <div>
+            <h2>Houses Safed</h2>
+            <div id="housCounter" hx-get="/houses/counter" hx-swap="innerHTML" hx-trigger="load">
+              Counter
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>,
+  )
+});
 
 houseRouter.get("/", (_, res) => {
   const houses = houseService.getAllHouses();
@@ -15,6 +34,13 @@ houseRouter.get("/", (_, res) => {
         <HouseComponent house={house} />
       ))}
     </div>,
+  )
+});
+
+houseRouter.get("/counter", (_, res) => {
+  const count = houseService.getHouseCount();
+  res.send(
+    <HousCounter amount={count} />
   )
 });
 
@@ -75,7 +101,7 @@ const HouseComponent = ({ house }: { house: House }) =>
   </div>
   ;
 
-const HousCounter = (amount: { amount: number }) =>
+const HousCounter = (counter: { amount: number }) =>
   <div>
-    <h2>Amount houses: {amount}</h2>
+    <h2>Amount houses: {"" + counter.amount}</h2>
   </div>;
