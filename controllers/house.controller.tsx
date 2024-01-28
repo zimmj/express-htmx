@@ -4,6 +4,8 @@ import { HouseService } from "../services/house.service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as elements from "typed-html";
 import { Layout } from "..";
+import Card from "../components/card.component";
+import Divider from "../components/divider.components";
 
 const houseRouter = Router();
 const houseService = new HouseService();
@@ -11,15 +13,20 @@ const houseService = new HouseService();
 houseRouter.get("/index", (_, res) => {
   res.send(
     <Layout>
-      <div>
-        <h1>House Service</h1>
-        <div>
-          <div>
+      <div class="houses-overview__grid">
+        <div class="col-span-3 flex justify-center">
+          <h1 class=" text-2xl">House Service</h1>
+        </div>
+        <div class="col-span-1 border-4 border-stone-200  bg-stone-200 rounded">
+          <div class="p-1">
             <h2>Houses Safed</h2>
             <div id="housCounter" hx-get="/houses/counter" hx-swap="innerHTML" hx-trigger="load">
-              Counter
+              Counter is loading...
             </div>
           </div>
+        </div>
+        <div id="housesList" class="col-span-2 overflow-auto" hx-get="/houses" hx-swap="innerHTML" hx-trigger="load">
+          Houses are loading...
         </div>
       </div>
     </Layout>,
@@ -30,9 +37,11 @@ houseRouter.get("/", (_, res) => {
   const houses = houseService.getAllHouses();
   res.send(
     <div>
-      {houses.map((house) => (
-        <HouseComponent house={house} />
-      ))}
+      <div class="grid auto-cols-max grid-cols-2 md:grid-cols-3 grid-rows-3 gap-2">
+        {houses.map((house) => (
+          <HouseComponent house={house} />
+        ))}
+      </div>
     </div>,
   )
 });
@@ -76,11 +85,10 @@ houseRouter.post("/", (req: Request, res: Response) => {
 houseRouter.delete("/:name", (req: Request, res: Response) => {
   const name = req.params.name;
 
-  const count = houseService.deleteHouse(name);
+  houseService.deleteHouse(name);
 
-  res.send(
-    <HousCounter amount={count} />
-  )
+
+  res.status(202).send();
 });
 
 export default houseRouter;
@@ -94,10 +102,20 @@ const AddressComponent = ({ address }: { address: Address }) =>
   </div>;
 
 const HouseComponent = ({ house }: { house: House }) =>
-  <div>
-    <h1>{house.name}</h1>
-    <AddressComponent address={house.address} />
-    <p>Value : {house.value}</p>
+  <div class="col-auto justy-stretch fade-me-out" hx-target="this">
+    <Card title={house.name}>
+      <AddressComponent address={house.address} />
+      <p>Value : {house.value}</p>
+      <Divider text="Action Buttons" />
+      <div class="flex justify-between">
+        <button class="bg-green-600 hover:bg-green-400 p-2 rounded" hx-get={`/houses/${house.name}/edit`} hx-swap="outerHTML">
+          Edit
+        </button>
+        <button class="bg-red-600 hover:bg-red-400 p-2 rounded" hx-delete={`/houses/${house.name}`} hx-swap="outerHTML swap:1s">
+          Delete
+        </button>
+      </div>
+    </Card >
   </div>
   ;
 
