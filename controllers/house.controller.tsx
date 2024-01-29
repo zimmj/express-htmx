@@ -6,6 +6,7 @@ import * as elements from "typed-html";
 import { Layout } from "..";
 import Card from "../components/card.component";
 import Divider from "../components/divider.components";
+import TextInput from "../components/text-input.component";
 
 const houseRouter = Router();
 const houseService = new HouseService();
@@ -20,8 +21,13 @@ houseRouter.get("/index", (_, res) => {
         <div class="col-span-1 border-4 border-stone-200  bg-stone-200 rounded">
           <div class="p-1">
             <h2>Houses Safed</h2>
-            <div id="housCounter" hx-get="/houses/counter" hx-swap="innerHTML" hx-trigger="load">
+            <div id="housCounter" hx-get="/houses/counter" hx-swap="innerHTML" hx-trigger="load, countChanged from:body">
               Counter is loading...
+            </div>
+            <div id="houseFilter" class="flex flex-col justify-between h-full">
+              <TextInput label="Name" id="name" />
+              <TextInput label="Color" id="color" />
+              <TextInput label="Amount" id="amount" />
             </div>
           </div>
         </div>
@@ -87,8 +93,7 @@ houseRouter.delete("/:name", (req: Request, res: Response) => {
 
   houseService.deleteHouse(name);
 
-
-  res.status(202).send();
+  res.setHeader("HX-Trigger", "countChanged").status(202).send();
 });
 
 export default houseRouter;
@@ -104,16 +109,18 @@ const AddressComponent = ({ address }: { address: Address }) =>
 const HouseComponent = ({ house }: { house: House }) =>
   <div class="col-auto justy-stretch fade-me-out" hx-target="this">
     <Card title={house.name}>
-      <AddressComponent address={house.address} />
-      <p>Value : {house.value}</p>
-      <Divider text="Action Buttons" />
-      <div class="flex justify-between">
-        <button class="bg-green-600 hover:bg-green-400 p-2 rounded" hx-get={`/houses/${house.name}/edit`} hx-swap="outerHTML">
-          Edit
-        </button>
-        <button class="bg-red-600 hover:bg-red-400 p-2 rounded" hx-delete={`/houses/${house.name}`} hx-swap="outerHTML swap:1s">
-          Delete
-        </button>
+      <div class="flex flex-col justify-between h-full">
+        <AddressComponent address={house.address} />
+        <p>Value : {house.value}</p>
+        <Divider text="Action Buttons" />
+        <div class="flex justify-between">
+          <button class="bg-green-600 hover:bg-green-400 p-2 rounded" hx-get={`/houses/${house.name}/edit`} hx-swap="outerHTML">
+            Edit
+          </button>
+          <button class="bg-red-600 hover:bg-red-400 p-2 rounded justify-self-end" hx-trigger="click once" hx-delete={`/houses/${house.name}`} hx-swap="outerHTML swap:1s">
+            Delete
+          </button>
+        </div>
       </div>
     </Card >
   </div>
