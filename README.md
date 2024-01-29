@@ -21,6 +21,7 @@ Folder structure:
 │   ├── css
 │   │   ├── app.css
 ├── index.tsx
+```
 
 The index.tsx file is the entry point of the application. It sets up the Express.js server and registers the controllers.
 It holds as well the base HTML structure of the application and the layout of the website.
