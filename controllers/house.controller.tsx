@@ -3,7 +3,7 @@ import { Address, House } from "../models/house.model";
 import { HouseService } from "../services/house.service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as elements from "typed-html";
-import { Layout } from "..";
+import { Layout, houseSse } from "..";
 import Card from "../components/card.component";
 import Divider from "../components/divider.components";
 import TextInput from "../components/text-input.component";
@@ -11,31 +11,40 @@ import TextInput from "../components/text-input.component";
 const houseRouter = Router();
 const houseService = new HouseService();
 
+
 houseRouter.get("/index", (_, res) => {
   res.send(
     <Layout>
-      <div class="houses-overview__grid">
+      <div hx-ext="sse" sse-connect="/sse/houses" class="houses-overview__grid">
         <div class="col-span-3 flex justify-center">
           <h1 class=" text-2xl">House Service</h1>
         </div>
         <div class="col-span-1 border-4 border-stone-200  bg-stone-200 rounded">
-          <div class="p-1">
-            <h2>Houses Safed</h2>
-            <div id="housCounter" hx-get="/houses/counter" hx-swap="innerHTML" hx-trigger="load, countChanged from:body">
-              Counter is loading...
+          <div class="p-1 grid gap-3 h-full">
+            <div>
+              <h2>Houses Safed</h2>
+              <div id="housCounter" hx-get="/houses/counter" hx-swap="innerHTML" hx-trigger="load, sse:counterChanged">
+                Counter is loading...
+              </div>
             </div>
-            <div id="houseFilter" class="flex flex-col justify-between h-full">
+            <div id="houseFilter" class="flex flex-col justify-center gap-3">
+              <h3 class="mx-auto text-xl">Filter</h3>
               <TextInput label="Name" id="name" />
               <TextInput label="Color" id="color" />
               <TextInput label="Amount" id="amount" />
             </div>
+            <div class="py-6 flex justify-center self-end">
+              <button class="bg-green-600 hover:bg-green-400 p-2 rounded" hx-get="/houses/reset" hx-swap="none">
+                Reset
+              </button>
+            </div>
           </div>
         </div>
-        <div id="housesList" class="col-span-2 overflow-auto" hx-get="/houses" hx-swap="innerHTML" hx-trigger="load">
+        <div id="housesList" class="col-span-2 overflow-auto" hx-get="/houses" hx-swap="innerHTML" hx-trigger="load, sse:houseListChanged">
           Houses are loading...
         </div>
       </div>
-    </Layout>,
+    </Layout >,
   )
 });
 
@@ -57,6 +66,14 @@ houseRouter.get("/counter", (_, res) => {
   res.send(
     <HousCounter amount={count} />
   )
+});
+
+
+houseRouter.get("/reset", (_, res) => {
+  houseService.restHouseList();
+  houseSse.send("reset", "houseListChanged");
+  houseSse.send("reset", "counterChanged");
+  res.setHeader("HX-Trigger", "countChanged").send()
 });
 
 houseRouter.get("/:id", (req: Request, res: Response) => {
@@ -93,8 +110,11 @@ houseRouter.delete("/:name", (req: Request, res: Response) => {
 
   houseService.deleteHouse(name);
 
-  res.setHeader("HX-Trigger", "countChanged").status(202).send();
+  houseSse.send("delete", "houseListChanged");
+  houseSse.send("delete", "counterChanged");
+  res.status(202).send();
 });
+
 
 export default houseRouter;
 

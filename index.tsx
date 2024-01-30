@@ -2,17 +2,20 @@ import express from "express";
 import dotenv from "dotenv";
 import * as elements from "typed-html";
 import houseRouter from "./controllers/house.controller";
+import SSE from "express-sse-ts";
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+export const houseSse = new SSE();
 
 app.use("/houses", houseRouter)
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 
+app.get("/sse/houses", houseSse.init);
 app.use(express.static(__dirname + "/public"));
 
 const BaselHtml = ({ children }: elements.Children) => `
@@ -20,6 +23,7 @@ const BaselHtml = ({ children }: elements.Children) => `
 <html lang="en">
   <head>
     <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/css/app.css" />
     <link rel="stylesheet" href="/css/style.css" />

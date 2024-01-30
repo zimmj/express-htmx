@@ -35,7 +35,12 @@ export class HouseService {
     return this.houses.find((house) => house.address === address);
   }
 
-  private houses: House[] = [
+  public restHouseList(): number {
+    this.houses = this.housesSafe.slice();
+    return this.houses.length;
+  }
+
+  private housesSafe: House[] = [
     {
       name: "Stark",
       address: {
@@ -281,6 +286,8 @@ export class HouseService {
     },
     // END: generate-houses
   ];
+
+  private houses: House[] = this.housesSafe.slice();
 }
 
 export default HouseService;
