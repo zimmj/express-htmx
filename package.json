@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
-    "start": "npx tsc && node dist/index.js",
+    "build": "npx tailwindcss -m -i ./tailwind.css -o ./public/css/style.css && npx tsc && cp -r ./public ./dist",
+    "start": "npm run build && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch index.tsx"
+    "dev": "tsx watch index.tsx & npm run tailwind:dev && fg",
+    "tailwind:dev": "npx tailwindcss -m -i ./tailwind.css -o ./public/css/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "3.0.3",
+    "tailwindcss": "^3.4.1",
     "ts-node-dev": "^2.0.0",
     "tsx": "^3.14.0",
     "typescript": "^5.2.2"

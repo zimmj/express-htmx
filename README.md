@@ -21,6 +21,7 @@ Folder structure:
 │   ├── css
 │   │   ├── app.css
 ├── index.tsx
+```
 
 The index.tsx file is the entry point of the application. It sets up the Express.js server and registers the controllers.
 It holds as well the base HTML structure of the application and the layout of the website.
@@ -35,12 +36,15 @@ To start the application, follow these steps:
 1. Clone the repository: `git clone <repository-url>`
 2. Navigate into the project directory: `cd <project-directory>`
 3. Install the dependencies: `npm install`
-4. Start the server: `npm start`
+4. Start the server: `npm dev`
 
 Now, you can visit `http://localhost:3000` to view the application.
+
+### Restriction
+
+npm start only works on linux and may.
+As we copy over the public folder to the dist folder, we need to use the cp command. This command is not available on windows.
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-```

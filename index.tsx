@@ -21,8 +21,8 @@ const BaselHtml = ({ children }: elements.Children) => `
   <head>
     <script src="https://unpkg.com/htmx.org@1.9.6"></script>
     <meta charset="UTF-8" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="http://localhost:3000/css/app.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Htmx show case</title>
   </head>
   <body>
