@@ -36,7 +36,7 @@ To start the application, follow these steps:
 1. Clone the repository: `git clone <repository-url>`
 2. Navigate into the project directory: `cd <project-directory>`
 3. Install the dependencies: `npm install`
-4. Start the server: `npm dev`
+4. Start the server: `npm run dev`
 
 Now, you can visit `http://localhost:3000` to view the application.
 
