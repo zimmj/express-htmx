@@ -66,6 +66,7 @@ app.get("/", (_, res) => {
       </button>
       <div hx-boost='true'>
         <a href="/houses/index">House Service</a>
+        <a href="/tutorial/index">Tutorial</a>
       </div>
     </Layout>,
   );
