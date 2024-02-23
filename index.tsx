@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import * as elements from "typed-html";
 import houseRouter from "./controllers/house.controller";
 import SSE from "express-sse-ts";
+import tutorialRouter from "./controllers/tutorial.controller";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const port = process.env.PORT || 3000;
 export const houseSse = new SSE();
 
 app.use("/houses", houseRouter)
+app.use("/tutorial", tutorialRouter)
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
@@ -24,6 +26,7 @@ const BaselHtml = ({ children }: elements.Children) => `
   <head>
     <script src="https://unpkg.com/htmx.org@1.9.6"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js" integrity="sha512-UOoJElONeUNzQbbKQbjldDf9MwOHqxNz49NNJJ1d90yp+X9edsHyJoAs6O4K19CZGaIdjI5ohK+O2y5lBTW6uQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/css/app.css" />
     <link rel="stylesheet" href="/css/style.css" />
@@ -63,6 +66,7 @@ app.get("/", (_, res) => {
       </button>
       <div hx-boost='true'>
         <a href="/houses/index">House Service</a>
+        <a href="/tutorial/index">Tutorial</a>
       </div>
     </Layout>,
   );
