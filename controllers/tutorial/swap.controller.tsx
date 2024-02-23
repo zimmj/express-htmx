@@ -5,7 +5,7 @@ import * as elements from "typed-html";
 
 export const swapExample = (res: Response) => {
     res.send(
-        <TutorialCard title="Simple click exchange" nextLink="/card/simple-get">
+        <TutorialCard title="Swapping attribute" nextLink="/example/target">
             <div class="flex flex-row">
                 <div id="code-site" class="basis-1/2">
                     <div class="mb-2">Each button is loading the same endpoint, which return a simple text.</div>

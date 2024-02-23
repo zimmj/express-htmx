@@ -3,6 +3,7 @@ import { Router } from "express";
 import * as elements from "typed-html";
 import { Layout } from "..";
 import { swapExample } from "./tutorial/swap.controller";
+import { targetExample } from "./tutorial/target.controller";
 
 const tutorialRouter = Router();
 export default tutorialRouter;
@@ -24,4 +25,8 @@ tutorialRouter.get("/example/swap/load-text", (_, res) => {
     res.send(
         <p>Loaded text from get</p>
     )
+});
+
+tutorialRouter.get("/example/target", (_, res) => {
+    targetExample(res);
 });
