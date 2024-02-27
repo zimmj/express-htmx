@@ -10,7 +10,7 @@ export const swapExample = (res: Response) => {
                 <div id="code-site" class="basis-1/2">
                     <div class="mb-2">Each button is loading the same endpoint, which return a simple text.</div>
                     <div class="flex flex-row justify-around">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="outerHTML" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="outerHTML" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Swap Outher HTML
                         </button>
                         <div class="basis-1/2">
@@ -18,7 +18,7 @@ export const swapExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="innerHTML" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="innerHTML" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Swap Inner HTML
                         </button>
                         <div class="basis-1/2">
@@ -26,7 +26,7 @@ export const swapExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="beforebegin" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="beforebegin" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Swap Before Begin
                         </button>
                         <div class="basis-1/2">
@@ -34,7 +34,7 @@ export const swapExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="afterbegin" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="afterbegin" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Swap After Begin
                         </button>
                         <div class="basis-1/2">
@@ -42,7 +42,7 @@ export const swapExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="beforeend" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="beforeend" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Swap Before End
                         </button>
                         <div class="basis-1/2">
@@ -50,7 +50,7 @@ export const swapExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="afterend" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="afterend" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Swap After End
                         </button>
                         <div class="basis-1/2">
@@ -58,7 +58,7 @@ export const swapExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="delete" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="delete" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Delete this
                         </button>
                         <div class="basis-1/2">
@@ -67,7 +67,7 @@ export const swapExample = (res: Response) => {
                     </div>
 
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-swap="none" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-swap="none" class="baseis-1/2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Nothing happens
                         </button>
                         <div class="basis-1/2">

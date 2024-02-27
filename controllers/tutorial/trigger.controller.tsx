@@ -12,7 +12,7 @@ export const triggerExample = (res: Response) => {
                         Each element is loading the same endpoint, which return a simple text.
                     </div>
                     <div class="flex flex-row justify-around">
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="load delay:5s" class="font-bold py-2 px-4 rounded border-2">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="load delay:5s" class="font-bold py-2 px-4 rounded border-2">
                             Load
                             <div
                                 class="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
@@ -28,7 +28,7 @@ export const triggerExample = (res: Response) => {
                         </div>
                     </div>
                     <div id="click-button" class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-trigger="click" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-trigger="click" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Click me
                         </button>
                         <div class="basis-1/2">
@@ -36,7 +36,7 @@ export const triggerExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <button hx-get="/tutorial/example/swap/load-text" hx-trigger="click[ctrlKey]" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button hx-get="/tutorial/example/load-text" hx-trigger="click[ctrlKey]" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                             Click me hold Ctrl
                         </button>
                         <div class="basis-1/2">
@@ -44,7 +44,7 @@ export const triggerExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="mouseover" class="font-bold py-2 px-4 rounded">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="mouseover" class="font-bold py-2 px-4 rounded">
                             Mouseover
                         </div>
                         <div class="basis-1/2">
@@ -52,7 +52,7 @@ export const triggerExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="focus" class="font-bold py-2 px-4 rounded">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="focus" class="font-bold py-2 px-4 rounded">
                             Focus
                         </div>
                         <div class="basis-1/2">
@@ -60,7 +60,7 @@ export const triggerExample = (res: Response) => {
                         </div>
                     </div>
                     <div class="flex flex-row justify-around my-2">
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="click from:#click-button" class="font-bold py-2 px-4 rounded">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="click from:#click-button" class="font-bold py-2 px-4 rounded">
                             Trigger from other element
                         </div>
                         <div class="basis-1/2">

@@ -31,15 +31,15 @@ export const specialTriggerExample = (res: Response) => {
                         <div class="w-200 font-bold text-nowrap py-2 px-4 rounded border-2">
                             Did you feel the loading?
                         </div>
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
                         </div>
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
                         </div>
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
                         </div>
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
                         </div>
-                        <div hx-get="/tutorial/example/swap/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
+                        <div hx-get="/tutorial/example/load-text" hx-trigger="intersect once" class="font-bold text-nowrap py-2 px-4 rounded border-2">
                         </div>
                     </div>
                     <div id="vertial-scroll" class="flex flex-col overflow-x-auto gap-10 border-4 rounded-md h-80 mt-6">
