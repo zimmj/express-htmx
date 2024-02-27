@@ -5,7 +5,7 @@ import * as elements from "typed-html";
 
 export const targetExample = (res: Response) => {
     res.send(
-        <TutorialCard title="Target Attribute" nextLink="simple-get">
+        <TutorialCard title="Target Attribute" nextLink="/example/trigger">
             <div class="flex flex-row gap-6">
                 <div id="code-site" class="basis-1/2">
                     <div class="mb-2">On click on the button, a new Button will be created at the defined target of this button.</div>
