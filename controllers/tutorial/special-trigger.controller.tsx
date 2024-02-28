@@ -5,9 +5,9 @@ import * as elements from "typed-html";
 
 export const specialTriggerExample = (res: Response) => {
     res.send(
-        <TutorialCard title="Special Trigger" nextLink="/example/trigger">
-            <div class="flex flex-row gap-4">
-                <div id="code-site" class="w-1/2">
+        <TutorialCard title="Special Trigger" nextLink="/example/indicator">
+            <div class="flex flex-col-reverse md:flex-row gap-4 ">
+                <div id="code-site">
                     <div class="mb-2">
                         Each element is loading the same endpoint, which return a simple text.
                     </div>
@@ -81,7 +81,7 @@ export const specialTriggerExample = (res: Response) => {
                         </div>
                     </div>
                 </div>
-                <div class="basis-1/2">
+                <div>
                     There are two other triggers, which can be really useful in some cases.
                     <br />
                     <br />

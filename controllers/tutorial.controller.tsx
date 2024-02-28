@@ -5,7 +5,8 @@ import { Layout } from "..";
 import { targetExample } from "./tutorial/target.controller";
 import { triggerExample } from "./tutorial/trigger.controller";
 import { paginatedExample, specialTriggerExample } from "./tutorial/special-trigger.controller";
-import { indicatorExemple } from "./tutorial/Indicators.controller";
+import { indicatorExemple } from "./tutorial/indicators.controller";
+import { swapExample, swapTransitionExample, transitionTextExample } from "./tutorial/swap.controller";
 
 const tutorialRouter = Router();
 export default tutorialRouter;
@@ -20,7 +21,15 @@ tutorialRouter.get("/index", (_, res) => {
 
 
 tutorialRouter.get("/example/swap", (_, res) => {
-    indicatorExemple(res);
+    swapExample(res);
+});
+
+tutorialRouter.get("/example/swap-transition", (_, res) => {
+    swapTransitionExample(res);
+});
+
+tutorialRouter.get("/example/swap/text", (_, res) => {
+    transitionTextExample(res);
 });
 
 tutorialRouter.get("/example/load-text", (_, res) => {
@@ -59,6 +68,6 @@ tutorialRouter.get("/example/pagination", (_, res) => {
     paginatedExample(res);
 });
 
-tutorialRouter.get("example/indecator", (_, res) => {
+tutorialRouter.get("/example/indicator", (_, res) => {
     indicatorExemple(res);
 });

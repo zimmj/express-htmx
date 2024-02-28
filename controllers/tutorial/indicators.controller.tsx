@@ -6,8 +6,8 @@ import * as elements from "typed-html";
 export const indicatorExemple = (res: Response) => {
     res.send(
         <TutorialCard title="Indicators" nextLink="/example/trigger">
-            <div class="flex flex-row gap-4">
-                <div id="code-site" class="w-1/2">
+            <div class="flex flex-col-reverse md:flex-row gap-4 ">
+                <div id="code-site">
                     <div class="mb-2">
                         This calls are calling endpoints, that wait with the return to show the indicator
                     </div>
@@ -30,7 +30,7 @@ export const indicatorExemple = (res: Response) => {
                         </div>
                     </div>
                 </div>
-                <div id="explanation" class="w-1/2">
+                <div id="explanation">
                     <div class="mb-2">
                         <h3 class="text-lg font-bold mb-6">Indicators</h3>
                         <p>Indicators are a way to show the user that something is happening in the background, while the page is waiting for a response.
@@ -53,7 +53,7 @@ export const indicatorExemple = (res: Response) => {
                         </p>
                     </div>
                 </div>
-            </div>
+            </div >
         </TutorialCard >
     )
 };

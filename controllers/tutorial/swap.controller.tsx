@@ -5,8 +5,8 @@ import * as elements from "typed-html";
 
 export const swapExample = (res: Response) => {
     res.send(
-        <TutorialCard title="Swapping attribute" nextLink="/example/target">
-            <div class="flex flex-row">
+        <TutorialCard title="Swapping attribute" nextLink="/example/swap-transition">
+            <div class="flex flex-col-reverse md:flex-row gap-4 ">
                 <div id="code-site" class="basis-1/2">
                     <div class="mb-2">Each button is loading the same endpoint, which return a simple text.</div>
                     <div class="flex flex-row justify-around">
@@ -96,6 +96,40 @@ export const swapExample = (res: Response) => {
                 </div>
             </div>
         </TutorialCard>
+    )
+};
+
+export const swapTransitionExample = (res: Response) => {
+    res.send(
+        <TutorialCard title="Swapping Mechanism and Transition" nextLink="/example/target">
+            <div class="flex flex-col-reverse md:flex-row gap-4">
+                <div id="code-site" class="basis-1/2 flex gap-6 flex-col">
+                    <button hx-get="/tutorial/example/swap/text" hx-swap="outerHTML" hx-target="#transition-target" class="m-auto bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        Swap text below
+                    </button>
+                    <div id="transition-target">
+                        Simple Text to show transition
+                    </div>
+                </div>
+                <div class="basis-1/2">
+                    <p>
+                        HTMX has a special swapping mechanism which helps to create Transitions.
+                        Each time when HTMX is swapping a element, it check, if an element with the same id already ecists.
+                        If so, it will copie the attributes of the old content to the new content.
+                        After a short delay, 20ms, it will add the new attributes to the new content.
+                        This allows to create a smooth transition between the old and the new content.
+                    </p>
+                </div>
+            </div>
+        </TutorialCard>
+    )
+};
+
+export const transitionTextExample = (res: Response) => {
+    res.send(
+        <div id="transition-target" class="red-transition">
+            Simple Text to show transition
+        </div>
     )
 };
 

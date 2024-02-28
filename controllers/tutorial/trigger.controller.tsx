@@ -6,7 +6,7 @@ import * as elements from "typed-html";
 export const triggerExample = (res: Response) => {
     res.send(
         <TutorialCard title="Trigger Attribute" nextLink="/example/special-trigger">
-            <div class="flex flex-row">
+            <div class="flex flex-col-reverse md:flex-row gap-4 ">
                 <div id="code-site" class="basis-1/2">
                     <div class="mb-2">
                         Each element is loading the same endpoint, which return a simple text.

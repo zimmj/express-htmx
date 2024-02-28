@@ -46,7 +46,7 @@ export const Layout = ({ children }: elements.Children) =>
           <a href="/">Zimmj Htmx Showcase</a>
         </h1>
       </div>
-      <div id="content" class="overflow-auto">
+      <div id="content" class="overflow-y-auto overflow-x-hidden">
         {children}
       </div>
       <div id="footer" class="bg-slate-600">
