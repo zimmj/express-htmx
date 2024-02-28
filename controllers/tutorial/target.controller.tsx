@@ -5,31 +5,31 @@ import * as elements from "typed-html";
 
 export const targetExample = (res: Response) => {
     res.send(
-        <TutorialCard title="Target Attribute" nextLink="simple-get">
-            <div class="flex flex-row gap-6">
+        <TutorialCard title="Target Attribute" nextLink="/example/trigger">
+            <div class="flex flex-col-reverse md:flex-row gap-4 ">
                 <div id="code-site" class="basis-1/2">
                     <div class="mb-2">On click on the button, a new Button will be created at the defined target of this button.</div>
                     <div class="grid grid-cols-2 gap-4">
                         <div id="target">
                             ID: Target
                         </div>
-                        <button hx-target="#target" hx-get="/tutorial/example/swap/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
+                        <button hx-target="#target" hx-get="/tutorial/example/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
                             Target CSS Selector
                         </button>
-                        <button hx-target="closest button" hx-get="/tutorial/example/swap/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
+                        <button hx-target="closest button" hx-get="/tutorial/example/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
                             Target closest button
                             <div class="target">closest</div>
                         </button>
-                        <button hx-target="find .target" hx-get="/tutorial/example/swap/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
+                        <button hx-target="find .target" hx-get="/tutorial/example/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
                             Target find
                             <div class="target">target</div>
                         </button>
                         <div>sibling</div>
                         <div>sibling</div>
-                        <button hx-target="previous div" hx-get="/tutorial/example/swap/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
+                        <button hx-target="previous div" hx-get="/tutorial/example/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
                             previous div
                         </button>
-                        <button hx-target="next div" hx-get="/tutorial/example/swap/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
+                        <button hx-target="next div" hx-get="/tutorial/example/load-text" class="bg-gray-800 text-white font-bold py-2 px-4 rounded">
                             next div
                         </button>
                         <div>sibling</div>
