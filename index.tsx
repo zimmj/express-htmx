@@ -60,13 +60,12 @@ export const Layout = ({ children }: elements.Children) =>
 app.get("/", (_, res) => {
   res.send(
     <Layout>
-      <button hx-get="clicked" hx-swap="outerHTML">
-        {" "}
-        CLick Me
-      </button>
-      <div hx-boost='true'>
-        <a href="/houses/index">House Service</a>
-        <a href="/tutorial/index">Tutorial</a>
+      <div class="ml-2">
+        <div hx-boost='true'>
+          <a href="/houses/index">House Service</a>
+          <br />
+          <a href="/tutorial/index">Tutorial</a>
+        </div>
       </div>
     </Layout>,
   );
