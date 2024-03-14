@@ -7,8 +7,8 @@ export const specialTriggerExample = (res: Response) => {
     res.send(
         <TutorialCard title="Special Trigger" nextLink="/example/indicator">
             <div class="flex flex-col-reverse md:flex-row gap-4 ">
-                <div id="code-site">
-                    <div class="mb-2">
+                <div id="code-site" class="md:w-1/2">
+                    <div class="mb-2 ">
                         Each element is loading the same endpoint, which return a simple text.
                     </div>
                     <h3 class="text-lg font-bold mb-6">Horizontal scroll with revealed</h3>
